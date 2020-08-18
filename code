@@ -1,0 +1,42 @@
+package library;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Bookstore  {
+	public HashMap<String, Integer> books = new HashMap<String, Integer>();
+
+
+	private ArrayList<TransactionForLibrary> transactionHistory = new ArrayList<TransactionForLibrary>();
+
+	public void deposit(String book, int qty){
+		int currentQty=0;
+		if(books.containsKey(book)) {
+			currentQty = books.get(book).intValue();
+		}
+		books.put(book, currentQty + qty);
+		
+		System.out.println(book + ":" + books.get(book));
+	}
+
+	public void withdraw(String book, int qty) {
+		int currentQty=0;
+		if(books.containsKey(book)) {
+			currentQty = books.get(book).intValue();
+		}
+		books.put(book, currentQty - qty);
+		
+		System.out.println(book + ":" + books.get(book));
+	}
+
+	public void getCurrentBooks() {
+		for (String i : books.keySet()) {
+			  System.out.println(i + ": " + books.get(i));
+			}
+	}
+
+	public ArrayList<TransactionForLibrary> getTransactionHistory() {
+		return this.transactionHistory;
+	}
+
+}
