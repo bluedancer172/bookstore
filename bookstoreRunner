@@ -1,0 +1,59 @@
+package library;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class BookstoreRunner {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int option = 0;
+		Bookstore bookstore = new Bookstore();
+		System.out.println("Welcome to Spoon Bookstore!");
+		System.out.println("");
+		System.out.println("");
+		do {
+			System.out.println(
+					"Enter: 1 to Deposit a book, 2 to Withdraw a book, 3 to Check Books, 4 to check transaction history, or 5 to Stop. ");
+			option = scanner.nextInt();
+			switch (option) {
+			case 1:
+				System.out.println("Enter book name" );
+				String bookName = scanner.next();
+				System.out.println("Enter quantity");
+				int qty = scanner.nextInt();
+				bookstore.deposit(bookName, qty);
+				System.out.println("Thank you for the book(s)!" + "\n");
+				break;
+			case 2:
+				System.out.println("Enter book name" );
+				String bookName1 = scanner.next();
+				System.out.println("Enter quantity");
+				int qty1 = scanner.nextInt();
+				bookstore.withdraw(bookName1, qty1);
+				System.out.println("Enjoy the book(s)!" + "\n");
+				break;
+			case 3:
+				bookstore.getCurrentBooks();
+				System.out.println("");
+				break;
+			case 4:
+				System.out.println("Your transaction history: ");
+				ArrayList<TransactionForLibrary> transactionHistory = bookstore.getTransactionHistory();
+				for (int i = 0; i < transactionHistory.size(); i++) {
+					System.out.println(transactionHistory.get(i).getTransactionDetails());
+				}
+				System.out.println("");
+				break;
+			case 5:
+				System.out.println("Goodbye.");
+				System.out.println("");
+				break;
+			}
+
+		} while (option != 5);
+
+	}
+
+}
